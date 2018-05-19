@@ -1,8 +1,29 @@
 *{
-    background-color: aliceblue;
+    background-color: rgb(52, 52, 52);
+    font-family: 'Nunito', sans-serif;
+    color: aliceblue;
+}
+
+.outer{
+    padding-top: 50px;
+}
+
+.main{
+    border: solid 2px white;
+    border-radius: 5px;
+    text-align: left;
+    padding: 20px 20px;
+    max-width: 350px;
+    margin-right: auto;
+    margin-left: auto;
     text-align: center;
 }
 
 h1{
     color: lightcoral;
+}
+
+#toggle{
+    background-color: grey;
+    border-radius: 5px;
 }

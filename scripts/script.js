@@ -12,19 +12,33 @@ $(document).ready(function(){
             
                 let s = JSON.stringify(json);
                 let obj = JSON.parse(s);
-                console.log(obj.name);
-                console.log(obj.main.temp);
-                console.log(obj);
-
-                function toFar(num) {
+                $("#city").html("What's it like in " + obj.name + " today?");
+                $("#temp").html(parseInt(toFer(obj.main.temp)) + "&#8457; with " + titleCase(obj.weather[0].description));
+    
+                function toFer(num) {
                     return (num * 1.8) + 32;
                 }
 
-                $("#data").html("City: " + obj.name + "<br>Temp: " + obj.main.temp + "<br>" + obj.weather[0].main);
-                
+                let toggled = true;
+                $("button").click(function(){
+                    
+                    if (!toggled){
+                        toggled = true;
+                        $("#temp").html(parseInt(toFer(obj.main.temp)) + "&#8457; with " + titleCase(obj.weather[0].description));
+                    } else {
+                        toggled = false;
+                        $("#temp").html(parseFloat(obj.main.temp).toFixed(1) + "&#8451; with " + titleCase(obj.weather[0].description));
+                    }
+                });
+    
+                function titleCase(str) {
+                    return str.toLowerCase()
+                              .split(" ")
+                              .map(word => { return word.replace(word.charAt(0), word.charAt(0).toUpperCase());}).join(" "); 
+                }
             }); 
         });
     } else {
-        $("#data").html("<h2>You don't have access to location service's. :(</h2>");
+        $("body").html("<h2>You don't have access to location service's. :(</h2>");
     }
 });
