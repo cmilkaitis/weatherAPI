@@ -4,6 +4,10 @@
     color: aliceblue;
 }
 
+h1{
+    color: lightcoral;
+}
+
 .outer{
     padding-top: 50px;
 }
@@ -17,10 +21,6 @@
     margin-right: auto;
     margin-left: auto;
     text-align: center;
-}
-
-h1{
-    color: lightcoral;
 }
 
 #toggle{
