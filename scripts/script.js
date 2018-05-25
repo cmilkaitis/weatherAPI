@@ -9,7 +9,6 @@ $(document).ready(function(){
             let url = 'https://fcc-weather-api.glitch.me/api/current?lon=' + lon + '&lat='+ lat;
 
             $.getJSON(url, function(obj){
-                console.log(obj);
                 $("#city").html("What's it like in " + obj.name + " today?");
                 $("#temp").html(parseInt(toFer(obj.main.temp)) + "&#8457; with " + titleCase(obj.weather[0].description));
                 
