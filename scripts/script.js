@@ -9,7 +9,7 @@ $(document).ready(function(){
             let url = 'https://fcc-weather-api.glitch.me/api/current?lon=' + lon + '&lat='+ lat;
 
             $.getJSON(url, function(obj){
-                
+                console.log(obj);
                 $("#city").html("What's it like in " + obj.name + " today?");
                 $("#temp").html(parseInt(toFer(obj.main.temp)) + "&#8457; with " + titleCase(obj.weather[0].description));
                 
@@ -34,27 +34,7 @@ $(document).ready(function(){
                               .split(" ")
                               .map(word => { return word.replace(word.charAt(0), word.charAt(0).toUpperCase());}).join(" "); 
                 }
-
-                let id = obj.weather[0].id;
-               
-                if (String(id).charAt(0) == 2) {
-                    id = "11d";
-                } else if (String(id).charAt(0) == 3) {
-                    id = "09d";
-                } else if (String(id).charAt(0) == 5) {
-                    id = "10d";
-                } else if (String(id).charAt(0) == 6) {
-                    id = "13d";
-                } else if (String(id).charAt(0) == 7) {
-                    id = "50d";
-                } else {
-                    id = "01d";
-                };
-                $("#pic").attr("src", "http://openweathermap.org/img/w/" + id +".png")
-
-
-
-
+                $("#pic").attr("src", obj.weather[0].icon);
             }); 
         });
     } else {
